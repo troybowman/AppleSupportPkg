@@ -57,7 +57,7 @@ ApfsBlockChecksumCalculate (
   CONST UINT64  ModValue = 0xFFFFFFFF;
 
   for (Index = 0; Index < DataSize / sizeof (UINT32); Index++) {
-    Sum1 = ((Sum1 + (UINT64)Data[Index]) % ModValue);
+    Sum1 = ((Sum1 + (UINT64) Data[Index]) % ModValue);
     Sum2 = (Sum2 + Sum1) % ModValue;
   }
 
@@ -239,6 +239,8 @@ ReadDisk (
 
 //
 // Function to parse GPT entries in legacy
+//
+// @TODO : Rework GPT scan as defined in specification
 //
 EFI_STATUS
 EFIAPI
@@ -598,6 +600,10 @@ ApfsDriverLoaderSupported (
   return Status;
 }
 
+//
+// @TODO : Add support for APFS Fusion Drives
+//         as defined in specification
+//
 /**
   Routine Description:
 
