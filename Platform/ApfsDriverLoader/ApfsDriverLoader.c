@@ -721,8 +721,11 @@ ApfsDriverLoaderStart (
   } else {
     MediaId       = BlockIo->Media->MediaId;
   }
-
-  ApfsBlock = AllocateZeroPool (2048);
+  
+  //
+  // We dont care if BlockSize < minimum apfs block size
+  //
+  ApfsBlock = AllocateZeroPool (APFS_CSB_MINIMUM_BLOCK_SIZE);
   if (ApfsBlock == NULL) {
     return EFI_OUT_OF_RESOURCES;
   }
@@ -735,7 +738,7 @@ ApfsDriverLoaderStart (
     DiskIo2,
     MediaId,
     LegacyBaseOffset,
-    2048,
+    APFS_CSB_MINIMUM_BLOCK_SIZE,
     ApfsBlock
     );
 
@@ -771,6 +774,18 @@ ApfsDriverLoaderStart (
   // Get ApfsBlockSize.
   //
   ApfsBlockSize = ContainerSuperBlock->BlockSize;
+
+  //
+  // Verify block size bounds
+  //
+  if (ApfsBlockSize > APFS_CSB_MAXIMUM_BLOCK_SIZE || ApfsBlockSize < APFS_CSB_MINIMUM_BLOCK_SIZE) {
+    DEBUG ((
+      DEBUG_WARN,
+      "ApfsBlockSize doesn't fit into specification: %u\n",
+      ApfsBlockSize
+      ));
+    return EFI_UNSUPPORTED;
+  }
 
   DEBUG ((
     DEBUG_INFO,
