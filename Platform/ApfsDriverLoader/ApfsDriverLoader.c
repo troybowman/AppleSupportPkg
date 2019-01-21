@@ -2,8 +2,8 @@
 
 APFS Driver Loader - loads apfs.efi from EfiBootRecord block
 
-Copyright (c) 2017-2018, savvas
-Copyright (c) 2018, vit9696
+Copyright (c) 2017-2019, savvas
+Copyright (c) 2019, vit9696
 
 All rights reserved.
 
