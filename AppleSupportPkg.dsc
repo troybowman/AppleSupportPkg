@@ -63,15 +63,22 @@
   OcMiscLib|OcSupportPkg/Library/OcMiscLib/OcMiscLib.inf
   OcDevicePathLib|OcSupportPkg/Library/OcDevicePathLib/OcDevicePathLib.inf
   OcDevicePropertyLib|OcSupportPkg/Library/OcDevicePropertyLib/OcDevicePropertyLib.inf
+  OcProtocolLib|OcSupportPkg/Library/OcProtocolLib/OcProtocolLib.inf
+  OcAppleBootPolicyLib|OcSupportPkg/Library/OcAppleBootPolicyLib/OcAppleBootPolicyLib.inf
+  OcFileLib|OcSupportPkg/Library/OcFileLib/OcFileLib.inf
+  OcXmlLib|OcSupportPkg/Library/OcXmlLib/OcXmlLib.inf
+  OcStringLib|OcSupportPkg/Library/OcStringLib/OcStringLib.inf
 
 [Components]
   AppleSupportPkg/Platform/AppleImageLoader/AppleImageLoader.inf
   AppleSupportPkg/Platform/AppleUiSupport/AppleUiSupport.inf
   AppleSupportPkg/Platform/ApfsDriverLoader/ApfsDriverLoader.inf
   AppleSupportPkg/Platform/AppleUsbKbDxe/UsbKbDxe.inf
+  AppleSupportPkg/Application/TestApp/TestApp.inf
 
 [PcdsFixedAtBuild]
   gEfiMdePkgTokenSpaceGuid.PcdMaximumAsciiStringLength|0
+  gEfiMdePkgTokenSpaceGuid.PcdUefiLibMaxPrintBufferSize|1024
 !if $(TARGET) == DEBUG
   # DEBUG_ASSERT_ENABLED | DEBUG_PRINT_ENABLED | DEBUG_CODE_ENABLED | CLEAR_MEMORY_ENABLED | ASSERT_DEADLOOP_ENABLED
   gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0x2f
