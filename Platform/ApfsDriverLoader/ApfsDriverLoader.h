@@ -53,35 +53,31 @@ typedef struct PhysicalRange_ {
     UINT64    BlockCount;
 } PhysicalRange;
 
-typedef struct UNKNOWNFIELD_
-{
-  UINT32      Unknown1;
-  EFI_HANDLE  Handle;
-  EFI_HANDLE  AgentHandle;
-  UINT8       Unknown2[88];
-  UINT64      Unknown3;
-} UNKNOWNFIELD;
-
 //
 // Private ApfsJumpStart structure
 //
 typedef struct _APFS_DRIVER_INFO_PRIVATE_DATA
 {
-  UINT32                            Magic;
-  EFI_HANDLE                        ControllerHandle;
-  EFI_HANDLE                        DriverBindingHandle;
-  APFS_EFIBOOTRECORD_LOCATION_INFO  EfiBootRecordLocationInfo;
-  UINT8                             Unknown1[24];
-  EFI_EVENT                         NotifyEvent;
-  VOID                              *ApfsDriverPtr;
-  UINT32                            ApfsDriverSize;
-  UINT32                            ContainerBlockSize;
-  UINT64                            ContainerTotalBlocks;
-  UINT8                             Unknown2[4];
-  UINT32                            Unknown3;
-  EFI_BLOCK_IO_PROTOCOL             *BlockIoInterface;
-  UNKNOWNFIELD                      *Unknown4;
-  UINT64                            UnknownAddress;
+  UINT32                               Signature;
+  EFI_HANDLE                           ControllerHandle;
+  EFI_HANDLE                           DriverBindingHandle;
+  APFS_EFIBOOTRECORD_LOCATION_INFO     EfiBootRecordLocationInfo;
+  BOOLEAN                              ApfsDriverStarted;
+  BOOLEAN                              Reserved1[7];
+  LIST_ENTRY                           *UnkPtr;
+  BOOLEAN                              UnknownByte2;
+  BOOLEAN                              Reserved2[7];
+  EFI_EVENT                            NotifyEvent;
+  VOID                                 *ApfsDriverPtr;
+  UINT32                               ApfsDriverSize;
+  UINT32                               ContainerBlockSize;
+  UINT64                               ContainerTotalBlocks;
+  BOOLEAN                              ApfsHasFusionDrive;
+  UINT8                                UnknownPadding[3];
+  UINT32                               MasterOrSlave;
+  EFI_BLOCK_IO_PROTOCOL                *BlockIoInterface;
+  struct AppleFilesystemNotifyContext  *Self;
+  LIST_ENTRY                           ApfsContextList;
 } APFS_DRIVER_INFO_PRIVATE_DATA;
 
 #define APFS_EFIBOOTRECORD_INFO_PRIVATE_DATA_FROM_THIS(a) \
