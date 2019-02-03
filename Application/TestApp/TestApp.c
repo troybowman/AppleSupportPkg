@@ -26,6 +26,7 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 #include <Library/OcMiscLib.h>
 #include <Library/OcProtocolLib.h>
 #include <Library/OcAppleBootPolicyLib.h>
+#include <Library/OcSmbiosLib.h>
 
 #include <Protocol/AppleBootPolicy.h>
 #include <Protocol/DevicePathPropertyDatabase.h>
@@ -196,6 +197,16 @@ TestBless (
   FreePool (Entries);
 }
 
+VOID
+TestSmbios (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+  CreateSmBios ();
+}
+
+
 EFI_STATUS
 FindWritableFs (
   OUT EFI_FILE_PROTOCOL **WritableFs
@@ -289,7 +300,6 @@ WriteFirmware (
   return Status;
 }
 
-
 EFI_STATUS
 EFIAPI
 UefiMain (
@@ -309,7 +319,9 @@ UefiMain (
 
   // TestDeviceProperties (ImageHandle, SystemTable);
 
-  TestBless (ImageHandle, SystemTable);
+  // TestBless (ImageHandle, SystemTable);
+
+  TestSmbios (ImageHandle, SystemTable);
 
   // WriteFirmware ();
 
