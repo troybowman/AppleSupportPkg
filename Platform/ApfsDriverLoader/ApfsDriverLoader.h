@@ -65,7 +65,7 @@ typedef struct _APFS_DRIVER_INFO_PRIVATE_DATA
   BOOLEAN                              ApfsDriverStarted;
   BOOLEAN                              Reserved1[7];
   LIST_ENTRY                           *UnkPtr;
-  BOOLEAN                              UnknownByte2;
+  BOOLEAN                              NotifyCallbackSignaled;
   BOOLEAN                              Reserved2[7];
   EFI_EVENT                            NotifyEvent;
   VOID                                 *ApfsDriverPtr;
