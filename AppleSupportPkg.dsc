@@ -70,6 +70,7 @@
   OcStringLib|OcSupportPkg/Library/OcStringLib/OcStringLib.inf
   OcSmbiosLib|OcSupportPkg/Library/OcSmbiosLib/OcSmbiosLib.inf
   OcVariableLib|OcSupportPkg/Library/OcVariableLib/OcVariableLib.inf
+  OcCpuLib|OcSupportPkg/Library/OcCpuLib/OcCpuLib.inf
 
 [Components]
   AppleSupportPkg/Platform/AppleImageLoader/AppleImageLoader.inf
