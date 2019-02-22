@@ -78,6 +78,7 @@
   AppleSupportPkg/Platform/ApfsDriverLoader/ApfsDriverLoader.inf
   AppleSupportPkg/Platform/AppleUsbKbDxe/UsbKbDxe.inf
   AppleSupportPkg/Application/TestApp/TestApp.inf
+  AppleSupportPkg/Driver/TestDriver/TestDriver.inf
 
 [PcdsFixedAtBuild]
   gEfiMdePkgTokenSpaceGuid.PcdMaximumAsciiStringLength|0
